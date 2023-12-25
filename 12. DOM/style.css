@@ -1,0 +1,9 @@
+.menu-item {
+	background-color: black;
+	color: white;
+}
+
+.menu-item.active {
+	background-color: white;
+	color: black;
+}
