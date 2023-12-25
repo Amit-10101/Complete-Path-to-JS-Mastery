@@ -66,7 +66,7 @@ console.log(greeting);
 ## 06 - Tricky Concepts
 
 ```javascript
-// Delve into challenging JavaScript concepts
+// Delve into challenging JavaScript concepts like Scope, Hoisting and Closures
 // Gain confidence in handling complex scenarios
 ```
 
@@ -85,6 +85,13 @@ let upperCase = message.toUpperCase();
 // Array methods
 let numbers = [1, 2, 3, 4, 5];
 let doubled = numbers.map((num) => num * 2);
+
+// Summing all the numbers using reduce
+let sum = numbers.reduce(
+	(accumulator, currentValue) => accumulator + currentValue,
+	0
+);
+console.log(sum); // Output: 15
 ```
 
 ## 10 - Objects in Detail
@@ -111,6 +118,24 @@ x = 20; // y remains 10
 let obj1 = { value: 10 };
 let obj2 = obj1;
 obj1.value = 20; // obj2.value also becomes 20
+
+// Shallow Cloning of an object using the spread operator
+let originalObject = { name: 'John', age: 30 };
+let clonedObject = { ...originalObject };
+
+originalObject.name = 'Alice'; // Does not affect clonedObject
+
+console.log(originalObject); // Output: { name: 'Alice', age: 30 }
+console.log(clonedObject); // Output: { name: 'John', age: 30 }
+
+// Deep Cloning an object using JSON.stringify and JSON.parse
+let originalObject = { name: 'John', age: 30, hobbies: {'Gaming', 'Coding', 'Football'}};
+let clonedObject = JSON.parse(JSON.stringify(originalObject));
+
+originalObject.name = 'Alice'; // Does not affect clonedObject
+
+console.log(originalObject); // Output: { name: 'Alice', age: 30, hobbies: {'Gaming', 'Coding', 'Football'}
+console.log(clonedObject); // Output: { name: 'John', age: 30, hobbies: {'Gaming', 'Coding', 'Football'}
 ```
 
 ## 12 - DOM (Document Object Model)
@@ -142,23 +167,45 @@ john.greet();
 
 ```javascript
 // Asynchronous programming with Promises
-function fetchData() {
+const fetchUser = (username) => {
 	return new Promise((resolve, reject) => {
-		// asynchronous task
-		if (success) {
-			resolve(data);
-		} else {
-			reject(error);
-		}
+		setTimeout(() => {
+			console.log('Now we have the user');
+
+			resolve(username);
+		}, 2000);
 	});
-}
+};
+
+const displayData = async () => {
+	const user = await fetchUser('AK');
+	console.log(user); // AK
+};
+
+displayData();
 ```
 
 ## 15 - Modern JavaScript
 
 ```javascript
-// ECMAScript 6 features
+// ECMAScript 6+ features
 const arrowFunction = (param) => param * 2;
+
+// Spread operator
+const numbers = [1, 2, 3, 4, 5];
+const newArray = [...numbers, 6, 7, 8];
+console.log(newArray); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+// Rest operator
+function sum(...numbers) {
+	let total = 0;
+	for (let number of numbers) {
+		total += number;
+	}
+	return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5)); // Output: 15
 
 // Embrace the latest JavaScript practices
 ```
